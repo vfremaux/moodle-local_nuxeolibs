@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<libraries>
+  <library>
+    <location>NuxeoAutomationClient</location>
+    <name>Nuxeo API Implementation</name>
+    <license>GPL</license>
+    <version></version>
+    <licenseversion></licenseversion>
+  </library>
+  <library>
+    <location>samples</location>
+    <name>code sampes</name>
+    <license>GPL</license>
+    <version></version>
+    <licenseversion></licenseversion>
+  </library>
+  <library>
+    <location>token</location>
+    <name>Nuxo extras</name>
+    <license>GPL</license>
+    <version></version>
+    <licenseversion></licenseversion>
+  </library>
+</libraries>
