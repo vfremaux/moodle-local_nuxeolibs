@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 **Nuxeo Automation Client PHP: avec Portal SSO**
 ==============================================
 
@@ -47,3 +48,7 @@ extensive packaging capabilities for building content applications.
 [8]: http://www.nuxeo.com/en/products/case-management
 
 More information on: <http://www.nuxeo.com/>
+=======
+# moodle-local_nuxeolibs
+A container for nuxeo common interface libraries
+>>>>>>> 1f159ce59a8cf315bcbc260f553cb3c1c6c03193
