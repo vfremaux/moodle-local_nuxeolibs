@@ -25,11 +25,11 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version  = 2016052300;   // The (date) version of this plugin.
-$plugin->requires = 2017110800;   // Requires this Moodle version.
-$plugin->release = '3.4.0 (Build 2015100600)';
+$plugin->version  = 2016101800;   // The (date) version of this plugin.
+$plugin->requires = 2014050800;   // Requires this Moodle version.
+$plugin->release = '2.7.0 (Build 2015100600)';
 $plugin->component = 'local_nuxeolibs';
-$plugin->maturity = MATURITY_RC;
+$plugin->maturity = MATURITY_STABLE;
 
 // Non moodle attributes.
-$plugin->codeincrement = '3.4.0000';
+$plugin->codeincrement = '2.7.0000';
