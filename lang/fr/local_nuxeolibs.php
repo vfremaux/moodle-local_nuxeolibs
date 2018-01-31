@@ -15,3 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 $string['pluginname'] = 'API Nuxeo centrale';
+$string['confignuxeokey'] = 'Clef secrète d\'API Nuxeo';
+$string['confignuxeokey_desc'] = 'La clef secrete permettant d\'utiliser l\'API Nuxéo';
+$string['configxmlsettings'] = 'XML de configuration';
+$string['configxmlsettings_desc'] = 'Collez le contenu du fichier XML de configuration du pont Nuxeo';

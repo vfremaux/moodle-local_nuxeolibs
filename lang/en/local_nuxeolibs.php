@@ -15,3 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 $string['pluginname'] = 'Nuxeo core plugin';
+$string['confignuxeokey'] = 'Nuxeo Secret Client Key';
+$string['confignuxeokey_desc'] = 'the client key for using the nuxeo API';
+$string['configxmlsettings'] = 'XML settings';
+$string['configxmlsettings_desc'] = 'Drop the content of a nuxeo bridge XML configuration file';
