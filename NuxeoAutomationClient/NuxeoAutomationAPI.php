@@ -12,10 +12,14 @@ require_once ('NuxeoAutomationUtilities.php');
  * @author Arthur GALLOUIN for NUXEO agallouin@nuxeo.com
  */
 class NuxeoPhpAutomationClient {
+
 	private $url;
+
 	private $session;
+
 	private $interceptor;
-	public function NuxeoPhpAutomationClient($url = 'http://localhost:8080/nuxeo/site/automation', $interceptor) {
+
+	public function __construct($url = 'http://localhost:8080/nuxeo/site/automation', $interceptor) {
 		$this->url = $url;
 		$this->interceptor = $interceptor;
 		$this->interceptor->setUrl ( $this->url );
@@ -50,7 +54,7 @@ class NuxeoRequestInterceptor implements RequestInterceptor {
 	public $username;
 	public $password;
 	public $session;
-	public function NuxeoRequestInterceptor($username, $password) {
+	public function __construct($username, $password) {
 		$this->username = $username;
 		$this->password = $password;
 	}
@@ -68,6 +72,7 @@ class NuxeoRequestInterceptor implements RequestInterceptor {
 		$session = new NuxeoSession ( $this->url, $this->session );
 		return $session;
 	}
+
 	public function setUrl($url) {
 		$this->url = $url;
 	}
@@ -82,7 +87,7 @@ class PortalSSORequestInterceptor implements RequestInterceptor {
 	private $url;
 	private $username;
 	private $secretekey;
-	public function PortalSSORequestInterceptor($username, $secretekey) {
+	public function __construct($username, $secretekey) {
 		$this->username = $username;
 		$this->secretekey = $secretekey;
 	}
@@ -90,9 +95,11 @@ class PortalSSORequestInterceptor implements RequestInterceptor {
 		$session = new NuxeoPortalSSOSession ( $this->url, $this );
 		return $session;
 	}
+
 	public function setUrl($url) {
 		$this->url = $url;
 	}
+
 	function getToken() {
 		$ts = time () * 1000;
 		$random = $random = rand ( 0, $ts );
@@ -115,17 +122,23 @@ class PortalSSORequestInterceptor implements RequestInterceptor {
  *        
  */
 class PortalSSOToken {
+
 	public $user_name;
+
 	public $ts;
+
 	public $random;
+
 	public $base64HashedToken;
-	public function PortalSSOToken($user_name, $ts, $random, $base64HashedToken) {
+
+	public function __construct($user_name, $ts, $random, $base64HashedToken) {
 		$this->user_name = $user_name;
 		$this->ts = $ts;
 		$this->random = $random;
 		$this->base64HashedToken = $base64HashedToken;
 	}
 }
+
 interface Session {
 	function newRequest($requestType);
 	function isValide();
@@ -138,10 +151,14 @@ interface Session {
  */
 class NuxeoPortalSSOSession implements Session {
 	private $urlLoggedIn;
+
 	private $headers;
+
 	private $requestContent;
+
 	private $interceptor;
-	public function NuxeoPortalSSOSession($url, $interceptor) {
+
+	public function __construct($url, $interceptor) {
 		$this->interceptor = $interceptor;
 		$this->urlLoggedIn = str_replace ( "http://", "", $url );
 		if (strpos ( $url, 'https' ) !== false) {
@@ -186,10 +203,14 @@ class NuxeoPortalSSOSession implements Session {
  * @author Arthur GALLOUIN for NUXEO agallouin@nuxeo.com
  */
 class NuxeoSession implements Session {
+
 	private $urlLoggedIn;
+
 	private $headers;
+
 	private $requestContent;
-	public function NuxeoSession($url, $session) {
+
+	public function __construct($url, $session) {
 		$this->urlLoggedIn = str_replace ( "http://", "", $url );
 		if (strpos ( $url, 'https' ) !== false) {
 			$this->urlLoggedIn = "https://" . $session . "@" . $this->urlLoggedIn;
@@ -214,6 +235,7 @@ class NuxeoSession implements Session {
 		$newRequest = new NuxeoRequest ( $this->urlLoggedIn, $this->headers, $requestType );
 		return $newRequest;
 	}
+
 	function isValide() {
 		try {
 			$answer = $this->newRequest ( "Document.Query" )->set ( 'params', 'query', "SELECT * FROM Workspace " )->sendRequest ();
@@ -232,9 +254,12 @@ class NuxeoSession implements Session {
  * @author Arthur GALLOUIN for NUXEO agallouin@nuxeo.com
  */
 class NuxeoDocument {
+
 	private $object;
+
 	private $properties;
-	Public function NuxeoDocument($newDocument) {
+
+	Public function __construct($newDocument) {
 		$this->object = $newDocument;
 		if (array_key_exists ( 'properties', $this->object ))
 			$this->properties = $this->object ['properties'];
@@ -304,8 +329,10 @@ class NuxeoDocument {
  * @author Arthur GALLOUIN for NUXEO agallouin@nuxeo.com
  */
 class NuxeoDocuments {
+
 	private $documentsList;
-	public function NuxeoDocuments($newDocList) {
+
+	public function __construct($newDocList) {
 		$this->documentsList = null;
 		$test = true;
 		if (! empty ( $newDocList ['entries'] )) {
@@ -325,6 +352,7 @@ class NuxeoDocuments {
 			return $newDocList;
 		}
 	}
+
 	public function output() {
 		$value = sizeof ( $this->documentsList );
 		echo '<table>';
@@ -341,6 +369,7 @@ class NuxeoDocuments {
 		}
 		echo '</table>';
 	}
+
 	public function getDocument($number) {
 		$value = sizeof ( $this->documentsList );
 		if ($number < $value and $number >= 0)
@@ -358,14 +387,17 @@ class NuxeoDocuments {
  */
 class NuxeoUtilities {
 	private $ini;
+
 	public function dateConverterPhpToNuxeo($date) {
 		return date_format ( $date, 'Y-m-d' );
 	}
+
 	public function dateConverterNuxeoToPhp($date) {
 		$newDate = explode ( 'T', $date );
 		$phpDate = new DateTime ( $newDate [0] );
 		return $phpDate;
 	}
+
 	public function dateConverterInputToPhp($date) {
 		$edate = explode ( '/', $date );
 		$day = $edate [2];
