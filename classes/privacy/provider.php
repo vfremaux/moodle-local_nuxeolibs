@@ -14,22 +14,9 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-/**
- * Version details.
- *
- * @package    local_nuxeolibs
- * @category   local
- * @copyright  Académie de Rennes (http://www.toutatice.fr)
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
+namespace local_nuxeolibs\privacy;
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version  = 2016052300;   // The (date) version of this plugin.
-$plugin->requires = 2018042700;   // Requires this Moodle version.
-$plugin->release = '3.5.0 (Build 2015100600)';
-$plugin->component = 'local_nuxeolibs';
-$plugin->maturity = MATURITY_RC;
-
-// Non moodle attributes.
-$plugin->codeincrement = '3.5.0000';
+class provider implements \core_privacy\local\metadata\null_provider {
+}
