@@ -14,6 +14,9 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+// Privacy.
+$string['privacy:metadata'] = 'The NuxeoLibs Local plugin does not store any personal data about any user.';
+
 $string['pluginname'] = 'Nuxeo core plugin';
 $string['confignuxeokey'] = 'Nuxeo Secret Client Key';
 $string['confignuxeokey_desc'] = 'the client key for using the nuxeo API';
